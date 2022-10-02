@@ -45,7 +45,7 @@ pipeline {
     stage('Build image and tag with build number') {
       steps {
         sh '''
-          docker build --pull --no-cache --network=host --file .lab990/Dockerfile -t ${IMAGE} .
+          docker build --pull --no-cache --network=host --file Dockerfile -t ${IMAGE} .
         '''  
       } // end steps
     } // end stage "build image and tag w build number"
