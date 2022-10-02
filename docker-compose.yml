@@ -1,0 +1,47 @@
+version: '3'
+
+volumes:
+  jenkins-data-volume:
+  jenkins-docker-certs-volume:
+
+networks:
+  jenkins-net:
+    driver: bridge
+
+services:
+  dind:
+    image: docker:dind
+    privileged: true
+    ports:
+      - "2376:2376"
+    networks:
+      jenkins-net:
+        aliases:
+          - docker
+    volumes: 
+      - jenkins-data-volume:/var/jenkins_home
+      - jenkins-docker-certs-volume:/certs/client
+    environment:
+      - DOCKER_TLS_CERTDIR=/certs
+    healthcheck:
+      test: ["CMD", "/usr/local/bin/docker", "version"]
+    restart: unless-stopped
+
+  jenkins:
+    image: 'jenkinsci/blueocean:latest'
+    container_name: jenkins
+    ports:
+      - "8080:8080"
+      - "50000:50000"
+    networks:
+      - jenkins-net
+    volumes:
+      - jenkins-data-volume:/var/jenkins_home
+      - jenkins-docker-certs-volume:/certs/client
+    healthcheck:
+      test: ["CMD", "wget", "--spider", "http://127.0.0.1:8080/login"]
+    environment:
+      - DOCKER_HOST=tcp://docker:2376 
+      - DOCKER_CERT_PATH=/certs/client 
+      - DOCKER_TLS_VERIFY=1 
+    restart: unless-stopped
