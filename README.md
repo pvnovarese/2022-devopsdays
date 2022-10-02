@@ -1,5 +1,5 @@
 # Learn from Log4Shell
-## 2022-10-04 DevOpsDays Houston
+## 2022-10-04 DevOpsDays 
 
 If you want to try some SBOM creation yourself:
 
