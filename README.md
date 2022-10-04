@@ -79,3 +79,46 @@ Once Jenkins is up and running, we have just a few things to configure:
     Select “Install Selected Plugins” and create an admin user
 
 If you'd like to create a more semi-permanent jenkins instance, use the docker-compose.yml file in this repo.
+
+## Bibliography, Reading List, Footnotes, &c
+
+* Dealing with log4shell (detection, mitigation, workarounds): https://cloudsecurityalliance.org/blog/2021/12/14/dealing-with-log4shell-aka-cve-2021-44228-aka-the-log4j-version-2/ 
+* Keeping up with log4shell (post mortem) https://cloudsecurityalliance.org/blog/2021/12/16/keeping-up-with-log4shell-aka-cve-2021-44228-aka-the-log4j-version-2/ 
+* Mysterious tweet hinting at the exploit: https://twitter.com/sirifu4k1/status/1468951859381485573 
+* Another mysterious tweet: https://twitter.com/CattusGlavo/status/1469010118163374089 
+* “THE” pull request: https://github.com/apache/logging-log4j2/pull/608 
+* Cloudflare digs for evidence of pre-disclosure exploits in the wild: https://twitter.com/eastdakota/status/1469800951351427073 
+* Draft of upcoming site content for SBOM.me: https://github.com/joshbressers/sbom-examples/blob/readme-update/site/index.md
+* Reflections on Trusting Trust: https://www.cs.cmu.edu/~rdriley/487/papers/Thompson_1984_ReflectionsonTrustingTrust.pdf 
+* Generate sboms with syft and jenkins: https://www.youtube.com/watch?v=nMLveJ_TxAs
+* Solar Winds post mortem: https://www.lawfareblog.com/solarwinds-and-holiday-bear-campaign-case-study-classroom
+* SPDX becomes sbom standard: https://www.linuxfoundation.org/press-release/spdx-becomes-internationally-recognized-standard-for-software-bill-of-materials
+* Profound Podcast - Episode 10 (John Willis and Josh Corman): https://www.buzzsprout.com/1758599/8761108-profound-dr-deming-episode-10-josh-corman-captain-america 
+* Creating a trusted container supply chain: https://thenewstack.io/creating-a-trusted-container-supply-chain/ 
+* Accuracy and Precision: https://wps.prenhall.com/wps/media/objects/3310/3390101/blb0105.html 
+
+### Footnotes
+
+* Slide 2: https://twitter.com/codinghorror/status/786667942142435329
+* Slide 6: https://www.mend.io/resources/blog/popular-cryptocurrency-exchange-dydx-has-had-its-npm-account-hacked/ 
+* Slide 6: https://www.mend.io/resources/blog/cybercriminals-targeted-users-of-packages-with-a-total-of-1-5-billion-weekly-downloads-on-npm/ 
+* Slide 7: https://joshdata.me/iceberger.html 
+* Slide 16: https://twitter.com/dakami/status/896477575475642368
+* Slides 14-15: https://www.blackhat.com/docs/us-16/materials/us-16-Munoz-A-Journey-From-JNDI-LDAP-Manipulation-To-RCE.pdf
+* Slide 17: https://hypixel.net/threads/psa-there-is-a-fatal-remote-code-execution-exploit-in-minecraft-and-its-by-typing-in-chat.4703238/
+* Slide 17: https://twitter.com/_r_netsec/status/1469120458083962882 
+* Slide 17: https://twitter.com/eastdakota/status/1469800951351427073 
+* Slides 18-19: https://twitter.com/CubicleApril/status/1469825942684160004
+* Slides 18-19: https://www.linkedin.com/posts/novarese_log4j-log4shell-activity-6876206319238463488-8bEA 
+* Slides 24-26: Maslow's Hierarchy of Supply Chain Needs: https://www.youtube.com/watch?v=rcP8QHFMwCw 
+* Slide 27: https://en.wikipedia.org/wiki/USA-247 
+* Slide 45: https://twitter.com/malwarejake/status/1432168973970313221 
+
+Images used for SBOM generation timing benchmarks:
+* registry.access.redhat.com/ubi8:latest 
+* https://gitlab.com/pvn_test_images/devops-supply-chain 
+* https://github.com/pvnovarese/devops-supply-chain-demo 
+
+* Integration of cosign with syft: https://github.com/anchore/syft/issues/510
+* Add support for Hints in syft: https://github.com/anchore/syft/issues/31 
+
