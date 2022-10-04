@@ -12,6 +12,13 @@ I've also included a docker-compose.yml file you can use to spin up a simple jen
 
 You can also just copy the Dockerfile and build it locally.
 
+## 0) Create some SBOMs 
+If you're using the jenkinsfile, SBOMs will be created immediately after each image build.  If you're just interactively noodling, you can create the SBOMs with a command like this:
+```
+# syft --output json=${IMAGE}-syft-sbom.json --output table=${IMAGE}-syft-sbom.txt --output spdx-json=${IMAGE}-spdx-sbom.json --output cyclonedx-json=${IMAGE}-cyclonedx-sbom.json ${IMAGE} 
+```
+This will create SBOMs in CycloneDX, SPDX, and Syft SBOMs in JSON format along with a simple text table SBOM.
+
 After you've created a few SBOMs, you can try a few of the following:
 
 ## 1) how many SBOMs are in the archive?
@@ -53,12 +60,12 @@ lab4:2 sha256:c9a0c9df88af4b5582915078654d327ad38186d033fdf3e7519214ae98257456 l
 ```
 
 ## 4. (TO DO) pipe all sboms into grype for CVE matching
+for this and more advanced SBOM exercises, you can check out the workshop I put together for DevOps World 2022: https://github.com/pvnovarese/2022-devopsworld (this workshop wasn't delivered due to Hurricane Ian).
+
 
 ## 999. Jenkins Setup
 
-Jenkins Setup
-
-We're going to run jenkins in a container to make this fairly self-contained and easily disposable. This command will run jenkins and bind to the host's docker sock (if you don't know what that means, don't worry about it, it's not important).
+If you don't have access to a Jenkins instance, you can deploy your own jenkins in a container (this fairly self-contained and easily disposable). This command will run jenkins and bind to the host's docker sock (if you don't know what that means, don't worry about it, it's not important).
 
 ```
 $ docker run -u root -d --name jenkins --rm -p 8080:8080 -p 50000:50000 -v /var/run/docker.sock:/var/run/docker.sock -v /tmp/jenkins-data:/var/jenkins_home jenkinsci/blueocean
